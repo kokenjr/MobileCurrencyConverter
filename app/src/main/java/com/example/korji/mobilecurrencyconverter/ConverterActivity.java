@@ -1,6 +1,7 @@
 package com.example.korji.mobilecurrencyconverter;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class ConverterActivity extends Activity {
 
     public static final String REST_ENDPOINT_URL = "http://api.fixer.io";
     private BarChart bcConversion;
+    private ProgressDialog progressDialog;
 
     protected List<Currency> currencies;
 
@@ -132,12 +134,12 @@ public class ConverterActivity extends Activity {
          */
         @Override
         protected void onPreExecute() {
-//            showLoadingProgressDialog();
+            showLoadingProgressDialog();
         }
 
         @Override
         protected void onPostExecute(Response response) {
-//            dismissProgressDialog();
+            dismissProgressDialog();
 
             //Log.d(TAG, "login response: " + response);
             if (response != null) {
@@ -150,6 +152,27 @@ public class ConverterActivity extends Activity {
                 bcConversion.getAxisLeft().setDrawGridLines(false);
                 setChart();
             }
+        }
+
+    }
+
+    public void showLoadingProgressDialog() {
+        this.showProgressDialog("Loading. Please wait...");
+    }
+
+    public void showProgressDialog(CharSequence message) {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setIndeterminate(true);
+        }
+
+        progressDialog.setMessage(message);
+        progressDialog.show();
+    }
+
+    public void dismissProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
         }
     }
 
