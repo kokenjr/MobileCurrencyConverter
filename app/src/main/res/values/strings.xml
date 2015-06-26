@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Mobile Currency Converter</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="amount_usd">Amount (USD)</string>
+    <string name="pounds">GBP</string>
+    <string name="euros">EUR</string>
+    <string name="yen">JPY</string>
+    <string name="reais">BRL</string>
+    <string name="fill_amount">Fill in an amount</string>
+    <string name="convert">convert</string>
+</resources>
